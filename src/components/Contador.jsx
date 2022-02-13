@@ -1,4 +1,4 @@
-import React,{useState,useReducer} from 'react'
+import React,{useReducer} from 'react'
 
 function Contador() {
   
@@ -12,7 +12,6 @@ function Contador() {
 //       }
 //   }
   
-
   const TYPES={
       INCREMENT:"INCREMENT",
       INCREMENT_5:"INCREMENT_5",
@@ -22,7 +21,14 @@ function Contador() {
   }
 
   const initialState = {contador: 0}; //estado inicial 
-  const [state, Dispatch] = useReducer(reducer,initialState);
+
+  const init = (initialState)=>{
+    return {
+      contador: initialState.contador + 100
+    }
+  }
+
+  const [state, Dispatch] = useReducer(reducer,initialState,init);
 
   //creamos la funcion reducer
   function reducer (state,action){
